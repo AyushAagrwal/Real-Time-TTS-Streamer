@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time TTS Player</title>
+    <meta name="description" content="Low-latency text-to-speech streaming player using Web Audio API">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔊 Real-Time TTS Player</h1>
+            <p class="subtitle">Low-latency streaming with Web Audio API</p>
+        </header>
+
+        <main>
+            <!-- Input Section -->
+            <section class="input-section">
+                <textarea id="textInput" placeholder="Enter text to synthesize..." rows="4">Hello! This is a real-time text-to-speech demo using Web Audio API and streaming technology.</textarea>
+                
+                <div class="controls">
+                    <select id="voiceSelect">
+                        <option value="en-US-AriaNeural">Loading voices...</option>
+                    </select>
+                    
+                    <div class="rate-control">
+                        <label for="rateSlider">Speed:</label>
+                        <input type="range" id="rateSlider" min="-50" max="50" value="0">
+                        <span id="rateValue">0%</span>
+                    </div>
+                    
+                    <button id="playBtn" class="btn-primary">▶ Play</button>
+                    <button id="stopBtn" class="btn-secondary" disabled>⏹ Stop</button>
+                </div>
+            </section>
+
+            <!-- Latency Metrics -->
+            <section class="metrics-section">
+                <h2>📊 Latency Profiling</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <span class="metric-label">First Byte</span>
+                        <span class="metric-value" id="metricFirstByte">--</span>
+                        <span class="metric-unit">ms</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-label">Chunks Received</span>
+                        <span class="metric-value" id="metricChunks">--</span>
+                        <span class="metric-unit">chunks</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-label">Total Data</span>
+                        <span class="metric-value" id="metricBytes">--</span>
+                        <span class="metric-unit">KB</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-label">Buffer Level</span>
+                        <span class="metric-value" id="metricBuffer">--</span>
+                        <span class="metric-unit">sec</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-label">Decode Time</span>
+                        <span class="metric-value" id="metricDecode">--</span>
+                        <span class="metric-unit">ms avg</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-label">Total Duration</span>
+                        <span class="metric-value" id="metricTotal">--</span>
+                        <span class="metric-unit">ms</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Status -->
+            <section class="status-section">
+                <div class="status-bar">
+                    <span class="status-dot" id="statusDot"></span>
+                    <span id="statusText">Ready</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Built with Web Audio API + MediaSource Extensions</p>
+        </footer>
+    </div>
+
+    <script src="/static/js/app.js" type="module"></script>
+</body>
+</html>
